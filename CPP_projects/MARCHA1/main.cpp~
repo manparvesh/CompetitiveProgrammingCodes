@@ -1,0 +1,14 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+int main(){
+	int t,n,m,i;
+	scanf("%d",&t);
+	while(t--){
+		scanf("%d %d",&n,&m);
+		int ar[n];
+		for(i=0;i<n;i++) scanf("%d",&ar[i]);
+		
+	}
+	return 0;
+}

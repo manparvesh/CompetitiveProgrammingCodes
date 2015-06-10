@@ -1,0 +1,43 @@
+package lcs;
+
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.io.PrintWriter;
+
+public class Main {
+
+	private static int l;
+	
+	public static void main(String[] args) throws Exception {
+		BufferedReader br=new BufferedReader(new InputStreamReader(System.in));
+		PrintWriter out=new PrintWriter(System.out);
+		String a,b;
+		a=br.readLine();
+		b=br.readLine();
+		out.println(lcs(a,b)+" length: "+l);
+		out.close();
+	}
+
+	private static String lcs(String a, String b) {
+		 int aLen = a.length();
+		    int bLen = b.length();
+		    String ans="";
+		    if(aLen == 0 || bLen == 0){
+		        ans="";
+		        l=ans.length();
+		    	return ans;
+		    }else if(a.charAt(aLen-1) == b.charAt(bLen-1)){
+		        ans=lcs(a.substring(0,aLen-1),b.substring(0,bLen-1))
+			            + a.charAt(aLen-1);
+		        l=ans.length();
+		        return ans;
+		    }else{
+		        String x = lcs(a, b.substring(0,bLen-1));
+		        String y = lcs(a.substring(0,aLen-1), b);
+		        ans=(x.length() > y.length()) ? x : y;
+		        l=ans.length();
+		        return ans;
+		    }
+	}
+
+}

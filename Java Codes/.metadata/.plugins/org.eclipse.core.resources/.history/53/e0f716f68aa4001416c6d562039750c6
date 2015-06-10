@@ -1,0 +1,57 @@
+package insertionsort2;
+
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.io.PrintWriter;
+
+public class Solution {
+	
+	
+	public static void main(String[] args) throws Exception {
+		BufferedReader br=new BufferedReader(new InputStreamReader(System.in));
+		PrintWriter out=new PrintWriter(System.out);
+		int n;
+		String s;
+		s=br.readLine();
+		n=Integer.parseInt(s);
+		int ar[]=new int[n];
+		String sar[];
+		s=br.readLine();
+		sar=s.split(" ");
+		for(int i=0;i<n;i++){
+			ar[i]=Integer.parseInt(sar[i]);
+		}
+		for(int i=0;i<n;i++){
+			int lok=i;
+			for(int j=0;j<n;j++){
+				if(ar[i]>ar[j]){
+					lok=j;break;
+				}
+			}
+			if(lok>i){
+				for(int j=i;j<=lok;j++){
+					//swap(ar[i],ar[j]);
+					int temp;
+					temp=ar[i];
+					ar[i]=ar[j];
+					ar[j]=temp;
+				}
+			}else{
+				for(int j=lok;j<=i;j++){
+					//swap(ar[i],ar[j]);
+					int temp;
+					temp=ar[i];
+					ar[i]=ar[j];
+					ar[j]=temp;
+				}
+			}
+			
+			for(int j=0;j<n;j++){
+				out.print(ar[j]+" ");
+			}
+			out.println();
+		}
+		out.close();
+	}
+
+}

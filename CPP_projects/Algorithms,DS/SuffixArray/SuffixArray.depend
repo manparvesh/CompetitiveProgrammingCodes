@@ -1,0 +1,8 @@
+# depslib dependency file v1.0
+1418981160 source:f:\cpp_projects\algorithms,ds\suffixarray\main.cpp
+	<iostream>
+	<string>
+	<map>
+	<algorithm>
+	<vector>
+

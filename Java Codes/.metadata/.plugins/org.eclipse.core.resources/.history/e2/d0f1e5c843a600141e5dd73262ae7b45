@@ -1,0 +1,33 @@
+package pangrams;
+
+import java.util.*;
+import java.io.*;
+
+class Solution{
+	public static void main(String[] args) throws Exception{
+		BufferedReader br=new BufferedReader(new InputStreamReader(System.in));
+		PrintWriter out=new PrintWriter(System.out);
+		String s;
+		s=br.readLine();
+		s.toLowerCase();
+		if(pangram(s)){
+			out.println("pangram\n");
+		}else{
+			out.println("not pangram\n");
+		}
+		out.close();
+	}
+	
+	static boolean pangram(String s){
+		Set<Character> set=new HashSet<Character>();
+		for(int i=0;i<s.length();i++){
+			if(s.charAt(i)!=' '){
+				set.add(s.charAt(i));
+			}
+		}
+		if(set.size()==26){
+			return true;
+		}
+		return false;
+	}
+}

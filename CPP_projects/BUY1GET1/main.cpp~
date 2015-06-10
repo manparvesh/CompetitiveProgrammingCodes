@@ -1,0 +1,12 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+int main(){
+	int t;
+	string s;
+	scanf("%d",&t);
+	while(t--){
+		cin>>s;
+	}
+	return 0;
+}

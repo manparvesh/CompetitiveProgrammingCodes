@@ -1,0 +1,27 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+int main(){
+	int n,i,ct;
+	int ar[100001],rev[100001];
+	while(1){
+		scanf("%d",&n);
+		if(n==0) break;
+		for(i=0;i<n;i++){
+			scanf("%d", &ar[i]);
+			rev[ar[i]] = i;
+		}
+		ct=0;
+		for(i=0;i<n;i++){
+			if(ar[i]==rev[i]){
+				ct++;
+			}
+		}
+		if(ct==n){
+			printf("ambiguous\n");
+		}else{
+			printf("not ambiguous\n");
+		}
+	}
+	return 0;
+}

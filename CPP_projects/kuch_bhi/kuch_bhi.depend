@@ -1,0 +1,5 @@
+# depslib dependency file v1.0
+1411792958 source:f:\cpp_projects\kuch_bhi\main.cpp
+	<iostream>
+	<string>
+

@@ -1,0 +1,28 @@
+package jp.co.workshop.global;
+
+/*
+ * @param <E>
+ * */
+
+import java.util.NoSuchElementException;
+
+public class ImmutableQueue<E> {
+	ImmutableQueue() {}
+
+
+	public ImmutableQueue<E> enqueue(E e){
+		return null;
+	}
+	
+	public ImmutableQueue<E> dequeue(){
+		return null;
+	}
+	
+	public E peek(){
+		return null;
+	}
+	
+	public int size(){
+		return -1;
+	}
+}

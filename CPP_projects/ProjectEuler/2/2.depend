@@ -1,0 +1,5 @@
+# depslib dependency file v1.0
+1420274402 source:f:\cpp_projects\projecteuler\2\main.cpp
+	<bits/stdc++.h>
+	<iostream>
+
