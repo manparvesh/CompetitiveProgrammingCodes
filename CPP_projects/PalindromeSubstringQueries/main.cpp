@@ -4,9 +4,13 @@
 #include <climits>
 using namespace std;
 
-#define d 10
-#define debug
-long long *prefix, *suffix;
+// This program doesn't handle overflows.
+// for that, we just need to add modulo to every multiplication operation
+// also, for diverse characters remove " - '0'" and set d = 256
+#define d 26 
+//#define debug
+typedef long long ll;
+ll *prefix, *suffix;
 
 int main() {
 	string s; // input string
@@ -16,28 +20,34 @@ int main() {
 	l = s.length();
 	_q = q;
 
-	prefix = new long long[l];
-	suffix = new long long[l];
+	prefix = new long long[l + 1];
+	suffix = new long long[l + 1];
 
 	// create hash from starting and end
 	double mult;
-	prefix[0] = (long long) s[0] - '0';
-	suffix[l - 1] = (long long) s[l - 1] - '0';
-	for (int i = 1; i < l; i++) {
+	prefix[0] = 0; //(long long) s[0] - '0';
+	for (int i = 1; i <= l; i++) {
 		mult = d;
-		prefix[i] = ((long long) s[i] - '0') + mult * prefix[i - 1];
-		suffix[l - i - 1] = ((long long) s[l - i - 1] - '0') + mult * suffix[l - i];
+		prefix[i] = ((long long) s[i - 1] - '0') + mult * prefix[i - 1];
 	}
+	reverse(s.begin(), s.end());
+	suffix[0] = 0;//(long long) s[0] - '0';
+	for (int i = 1; i <= l; i++) {
+		mult = d;
+		suffix[i] = ((long long) s[i - 1] - '0') + mult * suffix[i - 1];
+	}
+	reverse(s.begin(), s.end());
 
 #ifdef debug
+	cout << "String: " << s << endl;
 	cout << "Prefix array:" << endl;
-	for (int i = 0; i < l; i++) {
+	for (int i = 0; i <= l; i++) {
 		cout << prefix[i] << " ";
 	}
 	cout << endl;
 
 	cout << "Suffix array:" << endl;
-	for (int i = 0; i < l; i++) {
+	for (int i = 0; i <= l; i++) {
 		cout << suffix[i] << " ";
 	}
 	cout << endl;
@@ -48,10 +58,10 @@ int main() {
 	bool ans;
 	while (_q--) {
 		cin >> left >> right;
-		long long pehla = (prefix[right] - (left != 0 ? prefix[left] : 0));
-		long long dusra = (suffix[left] - suffix[right] * pow(d, right) + ((s[right]-'0')* pow(10, right)));
+		long long pehla = (prefix[right + 1] - (prefix[left] * (pow(d, right - left + 1))));
+		long long dusra = (suffix[l - left] - (suffix[l - right - 1] * (pow(d, right - left+1))));
 #ifdef debug
-		cout << prefix[right] << " " << prefix[left] << " " << suffix[left] << " " << suffix[right] << endl;
+		cout << prefix[right + 1] << " " << prefix[left] << " " << suffix[l - left] << " " << suffix[l - right - 1] << endl;
 		cout << pehla << " " << dusra << endl;
 #endif
 		ans = pehla == dusra;
